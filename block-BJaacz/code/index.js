@@ -110,12 +110,13 @@ function first(cb) {
   - Also write the required code to call the function
 */
 function second() {
-  let third = function (number) {
+  function third(number) {
     return number + 1;
-  };
+  }
   return third;
 }
-
+let val = second();
+console.log(val);
 /*
  Write a function named `callMe` which 
   - accept a function (callback function) as argument.
@@ -128,7 +129,7 @@ function callMe(cb) {
   let final = cb();
   return final;
 }
-console.log(callMe(second));
+let test = callMe(second());
 
 // Data Starts (Don't change this)
 const people = [
