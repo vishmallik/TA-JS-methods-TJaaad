@@ -44,14 +44,14 @@ console.log(fruits);
 console.log(fruits.slice(5));
 
 // Create another array named moreFruits with values ['Berries', 'Melons']
-moreFruits = [...fruits].concat("Berries", "Melons");
+moreFruits = ["Berries", "Melons"];
 console.log(moreFruits);
 
 // Concat moreFruits into fruits array (re-assign so the value gets updated)
 fruits = fruits.concat(moreFruits);
 console.log(fruits);
 // Log the name of all fruit in console
-console.log(fruits);
+fruits.forEach((element) => console.log(element));
 
 // Convert each fruit name to lowercase and log it
 fruits.forEach((element) => {
