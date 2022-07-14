@@ -488,9 +488,19 @@ Returns: a new array of same size but element are passed through callback functi
 
 20. `reduce`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
-- Example:
+- Parameter:
+  -callbackFn :A "reducer" function.
+
+  The function is called with the following arguments:
+
+  - previousValue: the value resulting from the previous call to callbackFn. On first call, initialValue if specified, otherwise the value of array[0].
+  - currentValue: the value of the current element. On first call, the value of array[0] if an initialValue was specified, otherwise the value of array[1].
+  - currentIndex: the index position of currentValue in the array. On first call, 0 if initialValue was specified, otherwise 1.
+  - array: the array to traverse.
+
+  - initialValue -Optional: A value to which previousValue is initialized the first time the callback is called.
+
+- Return: The value that results from running the "reducer" callback function to completion over the entire array.
   ```js
   let numbers = [1, 2, 3];
   numbers.concat(4); //[1,2,3,4]
@@ -499,7 +509,10 @@ Returns: a new array of same size but element are passed through callback functi
   let colors = ["red", "green", "blue"];
   colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+- `reduce` The reduce() method executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+
+The first time that the callback is run there is no "return value of the previous calculation". If supplied, an initial value may be used in its place. Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
+
 - No it does not mutate the original array
 
 21. `slice`
