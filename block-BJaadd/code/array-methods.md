@@ -135,211 +135,356 @@ Example:
 
 7. `includes`
 
-   - Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-   - Return: a single Array consisting of by all the values passed as parameters in the same order.
+   - Parameter: accepts two parameters
+   - searchElement : element to be searched in array
+   - fromIndex -optional : index to start search at.
+   - Return: true if value is found , else false
    - Example:
      ```js
      let numbers = [1, 2, 3];
-     numbers.concat(4); //[1,2,3,4]
-     let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-     sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
+     numbers.includes(4); //false
+     let sentanceArray = [
+       "A",
+       "quick",
+       "brown",
+       "fox",
+       "jumped",
+       "over",
+       "a",
+       "lazy",
+     ];
+     sentanceArray.includes("fox"); //true
      let colors = ["red", "green", "blue"];
-     colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+     colors.includes("red", 1); // false
      ```
-   - `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+   - `includes` searches the array for the searchElement and if found returns true else false.
    - No it does not mutate the original array
 
 8. `reverse`
 
-   - Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-   - Return: a single Array consisting of by all the values passed as parameters in the same order.
+   - Parameter: none
+   - Return: the array in reversed order
    - Example:
      ```js
      let numbers = [1, 2, 3];
-     numbers.concat(4); //[1,2,3,4]
-     let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-     sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
+     numbers.reverse(); //[3, 2, 1]
+     let sentanceArray = [
+       "A",
+       "quick",
+       "brown",
+       "fox",
+       "jumped",
+       "over",
+       "a",
+       "lazy",
+     ];
+     sentanceArray.reverse(); //['lazy', 'a', 'over', 'jumped', 'fox', 'brown', 'quick', 'A']
      let colors = ["red", "green", "blue"];
-     colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+     colors.reverse(); // ['blue', 'green', 'red']
      ```
-   - `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
-   - No it does not mutate the original array
+   - `reverse` reverses the original array and returns it.
+   - it mutate the original array
 
 9. `every`
 
-   - Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-   - Return: a single Array consisting of by all the values passed as parameters in the same order.
+   - Parameter: accepts a callback function which is called with three arguments:
+
+     - element: current selected element
+     - index -optional: index of currently selected element.
+     - array -optional: array on which every was called.
+
+   - Return: true if all elements of array returns true in the test function.
    - Example:
+
      ```js
-     let numbers = [1, 2, 3];
-     numbers.concat(4); //[1,2,3,4]
-     let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-     sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-     let colors = ["red", "green", "blue"];
-     colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+     let numbers = [1, 2, 3, 4, 5, 6, 7];
+     numbers.every((element) => element); //true
+
+     numbers.every((element) => element % 2 == 0); //false
+
+     numbers.every((element) => 1); //true
      ```
-   - `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+
+   - `every` return true if all element passes the test function
    - No it does not mutate the original array
 
 10. `shift`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: none
+- Return: the removed element
 - Example:
+
   ```js
+  let altcampus = [
+    `An`,
+    `Alternative`,
+    `to`,
+    `school`,
+    `you`,
+    `wished`,
+    `to`,
+    `Alternative`,
+  ];
+  altcampus.shift(); //"An"
+  console.log(altcampus); // ['Alternative', 'to', 'school', 'you', 'wished', 'to', 'Alternative']
+
   let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  numbers.shift(); // 1
+  console.log(numbers); //[2, 3]
+
+  let empty = [];
+  empty.shift(); //undefined
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
-- No it does not mutate the original array
+
+- `shift` removes element at index 0 and shift all other elements to lower and returns the removed element.
+- it mutate the original array
 
 11. `splice`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: accepts three parameters:
+  - start : index to start from.
+  - deleteCount -optional: no. of elements to delete starting from start
+  - items -optional: item to add in the array.
+- Return: an array consists of deleted items.
 - Example:
+
   ```js
+  let altcampus = [
+    `An`,
+    `Alternative`,
+    `to`,
+    `school`,
+    `you`,
+    `wished`,
+    `to`,
+    `Alternative`,
+  ];
+  altcampus.splice(3); //['school', 'you', 'wished', 'to', 'Alternative']
+  console.log(altcampus); // ['An', 'Alternative', 'to']
+
   let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  numbers.splice(1, 0, 44, 5, 66); // []
+  console.log(numbers); //[1, 44, 5, 66, 2, 3]
+
+  let empty = [];
+  empty.splice(0, 0, NaN, undefined, true, false); //[]
+  console.log(empty); //[NaN, undefined, true, false]
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
-- No it does not mutate the original array
+
+- `splice` modifies the arrat by removing or replacing existing elements or by adding new elements in place.
+- it mutate the original array
 
 12. `find`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: accepts a callback function which is called with three arguments:
+
+  - element: current selected element
+  - index -optional: index of currently selected element.
+  - array -optional: array on which find was called.
+
+- Return: the first element that satisfied the testing function else returns undefined.
 - Example:
+
   ```js
-  let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  let altcampus = [
+    `An`,
+    `Alternative`,
+    `to`,
+    `school`,
+    `you`,
+    `wished`,
+    `to`,
+    `Alternative`,
+  ];
+  altcampus.find((element) => element > "g"); //'to'
+
+  let numbers = [1, 2, 3, 66, 5, 442, 12, 5412, 20];
+  numbers.find((element) => element > 100); //442
+
+  numbers.find((element) => element % 2 == 0); //2
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+
+- `find` executes callback funtion once for each element of array and if callback function returns truthy value it returns the first element that satisfied the testing function else returns undefined.
 - No it does not mutate the original array
 
 13. `unshift`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: element : elements to add at start of array
+- Return: the length of modified array
 - Example:
+
   ```js
+  let altcampus = [
+    `An`,
+    `Alternative`,
+    `to`,
+    `school`,
+    `you`,
+    `wished`,
+    `to`,
+    `Alternative`,
+  ];
+  altcampus.unshift("Altcampus"); //9
+  console.log(altcampus); // ['Altcampus', 'An', 'Alternative', 'to', 'school', 'you', 'wished', 'to', 'Alternative']
+
   let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  numbers.unshift(4, 6); // 5
+  console.log(numbers); //[4,6,1,2,3]
+
+  let empty = [];
+  empty.unshift("Hello", "world"); //
+  console.log(empty); //[['Hello', 'world']
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
-- No it does not mutate the original array
+
+- `unshift` adds elements at the start of the array and shifts other elements one index higher and returns the length of newly modified array.
+- it mutate the original array
 
 14. `findIndex`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: accepts a callback function which is called with three arguments:
+
+  - element: current selected element
+  - index -optional: index of currently selected element.
+  - array -optional: array on which find was called.
+
+- Return: the index of first element that satisfied the testing function else returns -1.
 - Example:
+
   ```js
-  let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  let altcampus = [
+    `An`,
+    `Alternative`,
+    `to`,
+    `school`,
+    `you`,
+    `wished`,
+    `to`,
+    `Alternative`,
+  ];
+  altcampus.findIndex((element) => element > "g"); //2
+
+  let numbers = [1, 2, 3, 66, 5, 442, 12, 5412, 20];
+  numbers.findIndex((element) => element > 100); //5
+
+  numbers.findIndex((element) => element % 2 == 5); //-1
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+
+- `findIndex` executes callback funtion once for each element of array and if callback function returns truthy value it returns the index of first element that satisfied the testing function else returns -1.
 - No it does not mutate the original array
 
 15. `filter`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: accepts a callback function which tests the elements and return true of false and it is called with three arguments:
+
+  - element: current selected element
+  - index -optional: index of currently selected element.
+  - array -optional: array on which find was called.
+
+- Return: a array tat consists of elements that passes the callback function test.
+
 - Example:
+
   ```js
-  let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  let numbers = [1, 2, 3, 66, 5, 442, 12, 5412, 20];
+  numbers.filter((element) => element > 100); //[442, 5412]
+
+  numbers.filter((element) => element % 2 === 0); //[2, 66, 442, 12, 5412, 20]
+
+  numbers.filter((element) => element % 2 !== 0); //[1, 3, 5]
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+
+- `filter` returns the array with those elements that passes the test of the callback function. if no elements passed then empty array is passed.
 - No it does not mutate the original array
 
 16. `flat`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: accepts one parameter i.e, Depth (default to 1) , it specifies how deep the nested array structe should be flattened
+
+- Return: a single Array consisting of by all the values concatenated into it.
 - Example:
   ```js
-  let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  let numbers = [1, 2, 3, [4, 5, [6, [5, 6]]]];
+  numbers.flat(); //[1, 2, 3, 4, 5, Array(2)]
+  numbers.flat(2); //(7) [1, 2, 3, 4, 5, 6, Array(2)]
+  numbers.flat(Infinity); //[1, 2, 3, 4, 5, 6, 5, 6]
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+- `flat` accepts a number as depth value and flatten the nested array structure upto that depth level.
 - No it does not mutate the original array
 
 17. `forEach`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: accepts a callback function which is called with three arguments:
+
+  - element: current selected element
+  - index -optional: index of currently selected element.
+  - array -optional: array on which find was called.
+
+- Return: undefined
+
 - Example:
+
   ```js
+  let altcampus = [`An`, `Alternative`, `to`, `school`];
+  altcampus.forEach((element) => console.log(element)); //An
+  //Alternative
+  //to
+  //school
+
   let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  numbers.forEach((element) => console.log(element)); //1
+  //2
+  //3
+
+  let empty = [true, false, {}, undefined];
+  empty.forEach((element) => console.log(element)); //true
+  //false
+  //{}
+  //undefined
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+
+- `forEach` executes the callback function for each element of the array
 - No it does not mutate the original array
 
 18. `map`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: accepts a callback function which is called for every element of array and each time it executes the return value is stored in new array and it is called with three arguments:
+
+  - element: current selected element
+  - index -optional: index of currently selected element.
+  - array -optional: array on which find was called.
+
+Returns: a new array of same size but element are passed through callback function.
+
 - Example:
   ```js
-  let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  let numbers = [1, 2, 3, 10, 25, 110, 11, 234, 68161, 12];
+  numbers.map((element) => element * 2); // [2, 4, 6, 20, 50, 220, 22, 468, 136322, 24]
+  numbers.map((element) => element * 0); //[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  numbers.map((element) => {}); //[undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+- `map` return the new array of same size as original array with elements passed on by callback function
 - No it does not mutate the original array
 
 19. `pop`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: none
+- Return: the removes element
 - Example:
+
   ```js
   let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  numbers.pop(); //3
+  numbers; //[1, 2]
+
+  numbers.pop(); //2
+  numbers; //[1]
+
+  numbers.pop(); //1
+  numbers; //[]
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
-- No it does not mutate the original array
+
+- `pop` removes the last element of the array and it return the deleted element.
+- it mutate the original array
 
 20. `reduce`
 
