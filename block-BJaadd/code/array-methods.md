@@ -495,54 +495,66 @@ Returns: a new array of same size but element are passed through callback functi
 
   - previousValue: the value resulting from the previous call to callbackFn. On first call, initialValue if specified, otherwise the value of array[0].
   - currentValue: the value of the current element. On first call, the value of array[0] if an initialValue was specified, otherwise the value of array[1].
-  - currentIndex: the index position of currentValue in the array. On first call, 0 if initialValue was specified, otherwise 1.
+  - currentIndex: the index position of currentValue in the array.
   - array: the array to traverse.
 
   - initialValue -Optional: A value to which previousValue is initialized the first time the callback is called.
 
-- Return: The value that results from running the "reducer" callback function to completion over the entire array.
-  ```js
-  let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
-  ```
-- `reduce` The reduce() method executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+- Return: The value that results from running the "reducer" callback function to completion over the entire array.\
 
-The first time that the callback is run there is no "return value of the previous calculation". If supplied, an initial value may be used in its place. Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
+  ```js
+  let numbers = [1, 2, 3, 10, 25, 110, 11, 234, 61, 12];
+  numbers.reduce((acc, num) => acc + num, 0); //469
+
+  numbers.reduce((acc, num) => {
+    if (num > acc) {
+      acc = num;
+    }
+    return acc;
+  }, 0); //234
+
+  numbers.reduce((acc, num) => {
+    return acc - num;
+  }, numbers[numbers.length - 1]); //-457
+  ```
+
+- `reduce` The reduce() method executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
 
 - No it does not mutate the original array
 
 21. `slice`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: accepts two parameter start and end
+  - start -optional: the starting index from where extraction takes place
+  - end -optional: the end index which is the first element to be excluded.
+- Return: new array consisting the extracted elements
 - Example:
+
   ```js
-  let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  let numbers = [1, 2, 3, 10, 25, 110, 11, 234, 68161, 12];
+  numbers.slice(5, 7); //[110, 11]
+  numbers.slice(-5); //[110, 11, 234, 68161, 12]
+  numbers.slice(0, -5); //[1, 2, 3, 10, 25]
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+
+- `slice` return the array of extracted elements from specied startIndex to endIndex(not included)
 - No it does not mutate the original array
 
 22. `some`
 
-- Parameter: n (any) number of values (number, string, boolean, array, null, undefined, object and function etc)
-- Return: a single Array consisting of by all the values passed as parameters in the same order.
+- Parameter: accepts a callback function which is called for every element of array and it is called with three arguments:
+
+  - element: current selected element
+  - index -optional: index of currently selected element.
+  - array -optional: array on which find was called.
+
+- Return: true if callback function return a truthy value for atleast one of the elements in the array.
 - Example:
   ```js
-  let numbers = [1, 2, 3];
-  numbers.concat(4); //[1,2,3,4]
-  let sentanceArray = "A quick brown fox jumped over a lazy".split(" ");
-  sentanceArray.concat("dog").join(" "); //"A quick brown fox jumped over a lazy dog"
-  let colors = ["red", "green", "blue"];
-  colors.concat("black", "red", 21, true); // ['red','green','blue','black', 'red', 21, true]
+  let numbers = [1, 2, 3, 54, 52, 2, 14, 233, 65, 8, 6, 11, 20];
+  numbers.some((num) => num % 2 === 0); //true
+  numbers.some((num) => num % 15 === 0); //false
+  numbers.some((num) => num % 7 === 0); //true
   ```
-- `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
+- `some` returns true if atleast one of the element of array passes the test implemented by the callback function and return true. Otherwise returns false.
 - No it does not mutate the original array
