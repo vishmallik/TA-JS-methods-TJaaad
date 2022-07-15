@@ -37,7 +37,10 @@ strings.forEach((element) => {
 });
 
 // - Find all the words that contain 'is' use string method 'indexOf'
-console.log(strings[strings.indexOf("is")]);
+allIs = strings.filter((ele) => {
+  return ele.indexOf("is") !== -1;
+});
+console.log(allIs);
 
 // - Check if all the numbers in numbers array are divisible by three use array method (every)
 console.log(numbers.every((element) => element % 3 === 0));
@@ -45,6 +48,9 @@ console.log(numbers.every((element) => element % 3 === 0));
 // -  Sort Array from smallest to largest
 let sortedStrings = [...strings].sort();
 console.log(sortedStrings);
+
+let sortedNumbers = [...numbers].sort((a, b) => a - b);
+console.log(sortedNumbers);
 
 // - Remove the last word in strings
 strings.pop();
@@ -135,12 +141,9 @@ for (index of customers) {
 }
 
 //alternative
-// startsWithJ = customers.filter((ele) => {
-//   if (ele.firstname.startsWith("J")) {
-//     return ele.firstname;
-//   }
-// });
-// console.log(startsWithJ);
+startsWithJ = customers.filter((ele) => ele.firstname.startsWith("J"));
+
+console.log(startsWithJ);
 
 // - Create new array with only first name
 firstName = customers.map((ele) => {
@@ -165,7 +168,9 @@ vowelInFirstName = customers.filter((ele) => {
     ele.firstname.includes("o") ||
     ele.firstname.includes("u")
   ) {
-    return ele.firstname;
+    return true;
+  } else {
+    return false;
   }
 });
 console.log(vowelInFirstName);
