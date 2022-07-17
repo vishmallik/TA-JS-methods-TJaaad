@@ -26,7 +26,7 @@ let maleAvgGrade =
       acc = acc + obj.grade;
     }
     return acc;
-  }, 0) / persons.filter((obj) => obj.sex === "M").length;
+  }, 0) / persons.length;
 console.log(maleAvgGrade);
 
 // Find the average grade of female
@@ -36,7 +36,7 @@ let femaleAvgGrade =
       acc = acc + obj.grade;
     }
     return acc;
-  }, 0) / persons.filter((obj) => obj.sex === "F").length;
+  }, 0) / persons.length;
 console.log(femaleAvgGrade);
 
 // Find the highest grade
@@ -121,12 +121,8 @@ Output:
 
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
-let fruitsArr = fruitBasket.reduce((allFruits, fruit) => {
-  if (fruit in allFruits) {
-    allFruits[fruit]++;
-  } else {
-    allFruits[fruit] = 1;
-  }
+let fruitsArr = Object.keys(fruitsObj).reduce((allFruits, fruit) => {
+  allFruits = allFruits.concat([[fruit, fruitsObj[fruit]]]);
   return allFruits;
 }, []);
 console.log(fruitsArr);
