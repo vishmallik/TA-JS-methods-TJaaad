@@ -34,7 +34,7 @@ function nameWithS() {
       everyone = everyone.concat(peoples.name);
     }
   }
-  return everyone.filter((name) => name.startsWith("S"));
+  return everyone.filter((name) => name.toLowerCase().includes("s"));
 }
 
 function nameWithA() {
@@ -45,7 +45,7 @@ function nameWithA() {
       everyone = everyone.concat(peoples.name);
     }
   }
-  return everyone.filter((name) => name.startsWith("A"));
+  return everyone.filter((name) => name.toLowerCase().includes("a"));
 }
 
 function surnameWithS() {
@@ -74,12 +74,12 @@ function surnameWithA() {
 
 function peopleNameOfAllHouses() {
   let peopleNameOfAllHouses = {};
-  let nameArr = [];
-  for (house of got.houses) {
-    for (peoples of house.people) {
-      peopleNameOfAllHouses[house.name] = nameArr.concat(peoples.name);
-    }
-  }
+  got.houses.forEach(
+    (house) =>
+      (peopleNameOfAllHouses[house.name] = house.people.map(
+        (person) => person.name
+      ))
+  );
   return peopleNameOfAllHouses;
 }
 
